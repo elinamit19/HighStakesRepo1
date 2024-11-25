@@ -10,9 +10,12 @@ extern motor RightMotor1;
 extern motor RightMotor2;
 extern motor RightMotor3; 
 extern motor conveyor; 
+extern motor intake;
 extern motor_group Rightmotorgroup;
 extern motor_group Leftmotorgroup;
 extern digital_out hook;
+extern digital_out hook2;
+extern inertial interialSensor;
 
 
 /**
