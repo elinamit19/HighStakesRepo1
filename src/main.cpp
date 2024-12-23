@@ -68,38 +68,36 @@ void autonomous(void) {
 /*---------------------------------------------------------------------------*/
 
 void usercontrol(void) {
-int deadband = 5;
+int deadband = 15;
   while (1) {
      // Deadband stops the motors when Axis values are close to zero.
     // Get the velocity percentage of the left motor. (Axis3)
-    int leftMotorSpeed = Controller1.Axis3.position()*100.0;
+    int leftMotorSpeed = Controller1.Axis3.position();
     // Get the velocity percentage of the right motor. (Axis2)
-    int rightMotorSpeed = Controller1.Axis2.position()*100.0;
+    int rightMotorSpeed = Controller1.Axis2.position();
+    
    
     // Set the speed of the left motor. If the value is less than the deadband,
     // set it to zero.
+   
+
     if (abs(leftMotorSpeed) < deadband) {
       // Set the speed to zero.
       LeftMotor1.setVelocity(0, percent);
-      LeftMotor2.setVelocity(0, percent);
-      LeftMotor3.setVelocity(0, percent);
-      
+      LeftMotor2.setVelocity(0, percent);  
     } else {
       // Set the speed to leftMotorSpeed
       LeftMotor1.setVelocity(leftMotorSpeed, percent);
       LeftMotor2.setVelocity(leftMotorSpeed, percent);
-    LeftMotor3.setVelocity(leftMotorSpeed, percent);
     }
      if (abs(rightMotorSpeed) < deadband) {
       // Set the speed to zero.
       RightMotor1.setVelocity(0, percent);
       RightMotor2.setVelocity(0, percent);
-      RightMotor3.setVelocity(0, percent);
     } else {
       // Set the speed to leftMotorSpeed
       RightMotor1.setVelocity(rightMotorSpeed, percent);
       RightMotor2.setVelocity(rightMotorSpeed, percent);
-    RightMotor3.setVelocity(rightMotorSpeed, percent);
     }
     if (Controller1.ButtonR2.pressing()) {
       conveyor.setVelocity(-100, percent); 
@@ -116,8 +114,6 @@ int deadband = 5;
     } else{
       intake.setVelocity(0, percent);
     }
-    
-
   
     //Initalizes the button for pnuematics
     if(Controller1.ButtonY.pressing()){
@@ -130,19 +126,18 @@ int deadband = 5;
     }
     this_thread::sleep_for(10);
 
-    LeftMotor1.spin(reverse);
-    LeftMotor2.spin(reverse);
-    LeftMotor3.spin(forward);
+    LeftMotor1.spin(forward);
+    LeftMotor2.spin(forward);
     RightMotor1.spin(forward);
     RightMotor2.spin(forward);
-    RightMotor3.spin(reverse);
     conveyor.spin(forward);
     intake.spin(forward);
    wait(25, msec);
-
+ printf("Left Motor Speed: %d\n", leftMotorSpeed);
+    printf("Right Motor Speed: %d\n", rightMotorSpeed); 
  }
   
-   
+ 
 }
 
 

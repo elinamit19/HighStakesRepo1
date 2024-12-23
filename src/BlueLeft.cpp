@@ -28,8 +28,8 @@ void moveWithPD(double targetPosition, int rpm) {
 
     while (fabs(setPoint - currentposition) > 1 ) {
         //Get the current position of all 6 motors 
-        double rigthtPosition = (RightMotor1.position(degrees) + RightMotor2.position(degrees) + RightMotor3.position(degrees)) / 3.0;
-        double leftPosition = (LeftMotor1.position(degrees) + LeftMotor2.position(degrees) + LeftMotor3.position(degrees)) / 3.0;
+        double rigthtPosition = (RightMotor1.position(degrees) + RightMotor2.position(degrees)) / 3.0;
+        double leftPosition = (LeftMotor1.position(degrees) + LeftMotor2.position(degrees)) / 3.0;
         //get the average of both sides 
         currentposition = (rigthtPosition + leftPosition) / 2.0;
 
@@ -39,10 +39,8 @@ void moveWithPD(double targetPosition, int rpm) {
         //adjust motor speeds 
         RightMotor1.spin(forward, 100 + speedAdjustment, voltageUnits::volt);
         RightMotor2.spin(forward, 100 + speedAdjustment, voltageUnits::volt);
-        RightMotor3.spin(reverse, 100 - speedAdjustment, voltageUnits::volt);
         LeftMotor1.spin(reverse, 100 - speedAdjustment, voltageUnits::volt);
         LeftMotor2.spin(reverse, 100 - speedAdjustment, voltageUnits::volt);
-        LeftMotor3.spin(forward, 100 + speedAdjustment, voltageUnits::volt);
          
         wait(20, msec); // Allow time for the motors to adjust and the PD loop to run
     }
@@ -50,10 +48,8 @@ void moveWithPD(double targetPosition, int rpm) {
     // Stop motors once target position is reached
     RightMotor1.stop();
     RightMotor2.stop();
-    RightMotor3.stop();
     LeftMotor1.stop();
     LeftMotor2.stop();
-    LeftMotor3.stop();
 }
 
 // Autonomous routine for Blue Left
