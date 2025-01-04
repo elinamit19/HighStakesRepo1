@@ -100,9 +100,9 @@ int deadband = 15;
       RightMotor2.setVelocity(rightMotorSpeed, percent);
     }
     if (Controller1.ButtonR2.pressing()) {
-      conveyor.setVelocity(-100, percent); 
+      conveyor.setVelocity(-70, percent); 
     } else if(Controller1.ButtonR1.pressing()) {
-      conveyor.setVelocity(100, percent);
+      conveyor.setVelocity(70, percent);
     }
     else{
       conveyor.setVelocity(0, percent);

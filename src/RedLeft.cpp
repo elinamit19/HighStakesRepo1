@@ -3,10 +3,10 @@
 void RedLeft(){
     hook.set(false);
     hook2.set(true);
-RightMotor1.spinFor(forward, 569.394, degrees, 100, rpm, false); 
-RightMotor2.spinFor(forward, 569.394, degrees, 100, rpm, false); 
-LeftMotor1.spinFor(forward, 569.394, degrees, 100, rpm, false); 
-LeftMotor2.spinFor(forward, 569.394, degrees, 100, rpm, false); 
+RightMotor1.spinFor(reverse, 569.394, degrees, 100, rpm, false); 
+RightMotor2.spinFor(reverse, 569.394, degrees, 100, rpm, false); 
+LeftMotor1.spinFor(reverse, 569.394, degrees, 100, rpm, false); 
+LeftMotor2.spinFor(reverse, 569.394, degrees, 100, rpm, false); 
 
 wait(2000,msec);
 
